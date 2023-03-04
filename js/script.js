@@ -1,64 +1,53 @@
-let randomFraction = Math.random();
-
-console.log('Wylosowany ułamek to: ' + randomFraction);
-
-let calculation = randomFraction * 3 + 1;
-
-console.log('Ułamek pomnożony przez 3 i powiększony o 1: ' + calculation);
-
-let roundNumber = Math.floor(calculation);
-
-console.log('Liczba po zaokrągleniu w dół to: ' + roundNumber);
-
-// console.log('I choose for my course:' + roundNumber);
-
-if(roundNumber == 1){
-    computerMove = 'rock';
-    printMessage('I choose for my course: ' + computerMove);
-} else if (roundNumber == 2){
-    computerMove = 'scissors';
-    printMessage('I choose for my course: ' + computerMove);
-} else if (roundNumber == 3){
-    computerMove = 'paper';
-    printMessage('I choose for my course: ' + computerMove);
+function getMoveName(number){
+if(number == 1){
+    return 'rock';
+} else if (number == 2){
+    return 'scissors';
+} else if (number == 3){
+    return 'paper';
 } else {
     printMessage('Error');
 }
+}
+
+let randomFraction = Math.random();
+
+let calculation = randomFraction * 3 + 1;
+
+let roundNumber = Math.floor(calculation);
+
+let computerMove = getMoveName(roundNumber);
 
 let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
 
-console.log('Gracz wpisał: ' + playerInput);
+let playerMove = getMoveName(playerInput);
 
-let playerMove = 'nieznany ruch';
+function displayResult(argComputerMove,argPlayerMove){
+    if (argComputerMove == 'rock' && argPlayerMove == 'paper'){
+        printMessage('You win!');
+      } else if (argComputerMove == 'rock' && argPlayerMove == 'scissors'){
+        printMessage('You lose!');
+      } else if (argComputerMove == 'rock' && argPlayerMove == 'rock'){
+        printMessage('Draw!');
+      } else if (argComputerMove == 'scissors' && argPlayerMove == 'paper'){
+        printMessage('You loser!');
+      }  else if (argComputerMove == 'scissors' && argPlayerMove == 'scissors'){
+        printMessage('Draw!');
+    }  else if (argComputerMove == 'scissors' && argPlayerMove == 'rock'){
+        printMessage('You win!');
+      }  else if (argComputerMove == 'paper' && argPlayerMove == 'scissors'){
+        printMessage('You win!');
+      }  else if (argComputerMove == 'paper' && argPlayerMove == 'paper'){
+        printMessage('Draw!');
+    }  else if (argComputerMove == 'paper' && argPlayerMove == 'rock'){
+        printMessage('You lose!');
+      } else{
+        printMessage('Error! Try again later');
+      }
+    }
 
-if(playerInput == '1'){
-    playerMove = 'rock';
-} else if (playerInput == '2'){
-    playerMove = 'scissors'
-} else if (playerInput == '3'){
-    playerMove = 'paper'
-} else{
-    printMessage('We can not use it for our game, try 1, 2, 3');
-}
+printMessage('I choose for my course: ' + computerMove);
 
 printMessage('Twój ruch to: ' + playerMove);
 
-if (computerMove == 'rock' && playerMove == 'paper'){
-    printMessage('You win!');
-  } else if (computerMove == 'rock' && playerMove == 'scissors'){
-    printMessage('You lose!');
-  } else if (computerMove == 'rock' && playerMove == 'rock'){
-    printMessage('Draw!');
-  } else if (computerMove == 'scissors' && playerMove == 'paper'){
-    printMessage('Draw!');
-  }  else if (computerMove == 'scissors' && playerMove == 'scissors'){
-    printMessage('Draw!');
-  }  else if (computerMove == 'paper' && playerMove == 'scissors'){
-    printMessage('You win!');
-  }  else if (computerMove == 'paper' && playerMove == 'paper'){
-    printMessage('Draw!');
-}  else if (computerMove == 'paper' && playerMove == 'rock'){
-    printMessage('You lose!');
-  } else{
-    printMessage('Error! Try again later');
-  }
+displayResult(computerMove,playerMove);
