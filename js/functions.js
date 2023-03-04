@@ -24,22 +24,28 @@ function getMoveName(number){
 	function displayResult(argComputerMove,argPlayerMove){
 		if (argComputerMove == 'rock' && argPlayerMove == 'paper'){
 			printMessage('You win!');
+			userResults++;
 		  } else if (argComputerMove == 'rock' && argPlayerMove == 'scissors'){
 			printMessage('You lose!');
+			compResults++;
 		  } else if (argComputerMove == 'rock' && argPlayerMove == 'rock'){
 			printMessage('Draw!');
 		  } else if (argComputerMove == 'scissors' && argPlayerMove == 'paper'){
 			printMessage('You loser!');
+			compResults++;
 		  }  else if (argComputerMove == 'scissors' && argPlayerMove == 'scissors'){
 			printMessage('Draw!');
 		}  else if (argComputerMove == 'scissors' && argPlayerMove == 'rock'){
 			printMessage('You win!');
+			userResults++;
 		  }  else if (argComputerMove == 'paper' && argPlayerMove == 'scissors'){
 			printMessage('You win!');
+			userResults++;
 		  }  else if (argComputerMove == 'paper' && argPlayerMove == 'paper'){
 			printMessage('Draw!');
 		}  else if (argComputerMove == 'paper' && argPlayerMove == 'rock'){
 			printMessage('You lose!');
+			compResults++;
 		  } else{
 			printMessage('Error! Try again later');
 		  }
@@ -58,5 +64,6 @@ function getMoveName(number){
 			printMessage('Twój ruch to: ' + playerMove);
 			displayResult(computerMove,playerMove);
 
-
+			printMessage(userResults + ':' + compResults);
 		}
+
