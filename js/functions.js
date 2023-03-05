@@ -60,10 +60,10 @@ function getMoveName(number){
 			let computerMove = getMoveName(roundNumber);
 			let playerMove = getMoveName(playerInput);
 
-			printMessage('I choose for my course: ' + computerMove);
-			printMessage('Twój ruch to: ' + playerMove);
+			printMessage('Computer ruch to: ' + computerMove);
+			printMessage('User ruch to: ' + playerMove);
 			displayResult(computerMove,playerMove);
 
-			printMessage(userResults + ':' + compResults);
+			printMessage(userResults + ' : ' + compResults);
 		}
 
